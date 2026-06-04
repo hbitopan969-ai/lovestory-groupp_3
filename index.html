@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>☬『ＯᎶᎶᎽ』☬ Dark Zone</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#000;
+color:white;
+overflow:hidden;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.bg{
+position:fixed;
+inset:0;
+background:radial-gradient(circle,
+rgba(255,0,0,.18),
+#000 70%);
+animation:pulse 3s infinite;
+}
+
+@keyframes pulse{
+50%{filter:brightness(1.4);}
+}
+
+.lightning{
+position:fixed;
+inset:0;
+background:white;
+opacity:0;
+animation:flash 8s infinite;
+pointer-events:none;
+}
+
+@keyframes flash{
+96%{opacity:.8;}
+97%{opacity:0;}
+98%{opacity:.4;}
+99%{opacity:0;}
+}
+
+.smoke{
+position:fixed;
+inset:-50%;
+background:
+radial-gradient(circle,
+rgba(255,255,255,.03),
+transparent 60%);
+animation:smoke 20s linear infinite;
+pointer-events:none;
+}
+
+@keyframes smoke{
+from{transform:translateY(0);}
+to{transform:translateY(-250px);}
+}
+
+.card{
+position:relative;
+width:92%;
+max-width:850px;
+padding:25px;
+text-align:center;
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(15px);
+border-radius:25px;
+border:1px solid rgba(255,255,255,.15);
+z-index:10;
+}
+
+.logo{
+font-size:50px;
+color:#ff3333;
+text-shadow:0 0 20px red;
+margin-bottom:15px;
+}
+
+#main{
+display:none;
+}
+
+.progress{
+width:100%;
+height:20px;
+background:#222;
+border-radius:20px;
+overflow:hidden;
+margin-top:20px;
+}
+
+.bar{
+height:100%;
+width:0%;
+background:red;
+}
+
+#count{
+font-size:55px;
+color:#ff4444;
+margin-top:15px;
+}
+
+#whatsappBtn{
+display:none;
+margin-top:20px;
+padding:15px 25px;
+background:#25D366;
+color:white;
+text-decoration:none;
+border-radius:15px;
+font-size:22px;
+box-shadow:0 0 25px #25D366;
+animation:bounce 1s infinite;
+}
+
+@keyframes bounce{
+50%{transform:translateY(-8px);}
+}
+
+.small{
+line-height:1.8;
+color:#ddd;
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+<div class="lightning"></div>
+<div class="smoke"></div>
+
+<audio id="music" loop>
+<source src="https://files.catbox.moe/9t77g7.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card" id="intro">
+
+<h1>⚠ ACCESS DENIED ⚠</h1>
+
+<br>
+
+<p>Unknown Visitor Detected...</p>
+<p>Initializing Secure Connection...</p>
+<p>Scanning User...</p>
+
+<div class="progress">
+<div class="bar" id="bar"></div>
+</div>
+
+<br>
+
+<p>
+█░░░░░░░░░ 10%<br>
+███░░░░░░░ 35%<br>
+██████░░░░ 70%<br>
+██████████ 100%
+</p>
+
+</div>
+
+<div class="card" id="main">
+
+<div class="logo">
+☬『ＯᎶᎶᎽ』☬
+</div>
+
+<div class="small">
+
+TARGET FOUND<br>
+
+🟢 ONLINE<br>
+👑 LEGENDARY USER<br>
+🔐 ULTRA PRO MAX SECURITY
+
+<br><br>
+
+━━━━━━━━━━━━━━━━━━━━
+
+<h3>WELCOME TO THE OFFICIAL OGGY NETWORK</h3>
+
+<br>
+
+You are not here by accident.
+
+<br><br>
+
+Only a few people have reached this page.<br>
+Many tried.<br>
+Few succeeded.
+
+<br><br>
+
+🔥 FEAR NONE<br>
+⚔ RESPECT FEW<br>
+👑 RULE YOUR OWN WORLD
+
+<br><br>
+
+💀 Legends Never Die<br>
+⚔ Fighters Never Quit<br>
+🔥 Fear None
+
+<br><br>
+
+💎 Premium Access<br>
+⚡ Fast Response<br>
+🔥 Unique Content<br>
+📱 Direct WhatsApp Contact
+
+<br><br>
+
+Verification Required...
+
+</div>
+
+<h2>Wait 30 Seconds To Unlock Contact</h2>
+
+<div id="count">30</div>
+
+<div id="done" style="display:none;">
+
+<h2>✅ ACCESS GRANTED</h2>
+
+<br>
+
+<a
+id="whatsappBtn"
+href="https://wa.me/message/OLPOIKQWAVFUG1"
+target="_blank">
+
+🔥💬 GET OGGY CONTACT 💬🔥
+
+</a>
+
+</div>
+
+<br>
+
+<p>Tap once anywhere to allow music 🎵</p>
+
+</div>
+
+<script>
+
+let tapped=false;
+
+document.body.addEventListener("click",()=>{
+tapped=true;
+},{once:true});
+
+let progress=0;
+
+let p=setInterval(()=>{
+progress+=2;
+document.getElementById("bar").style.width=progress+"%";
+
+if(progress>=100){
+clearInterval(p);
+}
+},100);
+
+setTimeout(()=>{
+
+document.getElementById("intro").style.display="none";
+document.getElementById("main").style.display="block";
+
+let n=30;
+
+let timer=setInterval(()=>{
+
+n--;
+
+document.getElementById("count").innerText=n;
+
+if(n===20 && tapped){
+document.getElementById("music").play().catch(()=>{});
+}
+
+if(n<=0){
+
+clearInterval(timer);
+
+document.getElementById("count").style.display="none";
+
+document.getElementById("done").style.display="block";
+
+document.getElementById("whatsappBtn").style.display="inline-block";
+
+}
+
+},1000);
+
+},5000);
+
+</script>
+
+</body>
+</html>
